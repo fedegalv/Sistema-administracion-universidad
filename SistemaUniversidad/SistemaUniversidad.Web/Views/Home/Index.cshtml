@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    if (Session["id"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<b>Placeholder para inicio</b>
+Bienvenido usuari

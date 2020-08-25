@@ -1,0 +1,12 @@
+D:\ASP net\Sistema-administracion-universidad\SistemaUniversidad\Universidad.Data\obj\Debug\SistemaUniversidad.Data.csprojAssemblyReference.cache
+D:\ASP net\Sistema-administracion-universidad\SistemaUniversidad\Universidad.Data\obj\Debug\SistemaUniversidad.Data.csproj.CoreCompileInputs.cache
+D:\ASP net\Sistema-administracion-universidad\SistemaUniversidad\Universidad.Data\bin\Debug\Universidad.Data.dll.config
+D:\ASP net\Sistema-administracion-universidad\SistemaUniversidad\Universidad.Data\bin\Debug\Universidad.Data.dll
+D:\ASP net\Sistema-administracion-universidad\SistemaUniversidad\Universidad.Data\bin\Debug\Universidad.Data.pdb
+D:\ASP net\Sistema-administracion-universidad\SistemaUniversidad\Universidad.Data\bin\Debug\EntityFramework.dll
+D:\ASP net\Sistema-administracion-universidad\SistemaUniversidad\Universidad.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\ASP net\Sistema-administracion-universidad\SistemaUniversidad\Universidad.Data\bin\Debug\EntityFramework.xml
+D:\ASP net\Sistema-administracion-universidad\SistemaUniversidad\Universidad.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\ASP net\Sistema-administracion-universidad\SistemaUniversidad\Universidad.Data\obj\Debug\SistemaUniversidad.Data.csproj.CopyComplete
+D:\ASP net\Sistema-administracion-universidad\SistemaUniversidad\Universidad.Data\obj\Debug\Universidad.Data.dll
+D:\ASP net\Sistema-administracion-universidad\SistemaUniversidad\Universidad.Data\obj\Debug\Universidad.Data.pdb

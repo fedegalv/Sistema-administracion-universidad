@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Table]
+(
+	[id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [dni] VARCHAR(10) NOT NULL, 
+    [legajo] VARCHAR(50) NULL
+)
