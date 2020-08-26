@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Administracion Universidad</title>
+    <title>@ViewBag.Title - Administracion - Usuario Alumno</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -18,14 +18,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Administracion universidad", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Administracion universidad", "Index", "Alumno", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 @if (Session["userId"] != null)
                 {
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Profesores", "Index", "Administrador")</li>
+                        <li>@Html.ActionLink("Inicio", "Index", "Alumno")</li>
+                        @* AGREGAR MANEJO DE MATERIAS *@
+                        <li>@Html.ActionLink("Materias", "Index", "Alumno")</li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
 

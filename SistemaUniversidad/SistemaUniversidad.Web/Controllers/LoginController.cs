@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using SistemaUniversidad;
 using Universidad.Data.Models;
 using Universidad.Data.Services;
@@ -20,7 +21,7 @@ namespace SistemaUniversidad.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Authorize(User userModel)
+        public ActionResult Autorizar(User userModel)
         {
             if (ModelState.IsValid)
             {
@@ -33,10 +34,20 @@ namespace SistemaUniversidad.Web.Controllers
                 else
                 {
                     //ViewBag.ErrorMessage = "Encontrado";
-                    Session["id"] = userDetails.id;
-                    Session["dni"] = userDetails.dni;
-                    Session["isAdmin"] = userDetails.is_admin;
-                    return RedirectToAction("Index", "Home");
+                    Session["userId"] = userDetails.Id;
+                    Session["userDni"] = userDetails.Dni;
+                    Session["userIsAdmin"] = userDetails.EsAdmin;
+                    if ((bool)Session["userIsadmin"])
+                    {
+                        //TempData["user"] = userDetails;
+                        Session["user"] = userDetails;
+                        return RedirectToAction("Index", "Administrador");
+                    }
+                    else if (!(bool)Session["userisAdmin"])
+                    {
+                        Session["user"] = userDetails;
+                        return RedirectToAction("Index", "Alumno");
+                    }
                 }
             }
             return View(userModel);

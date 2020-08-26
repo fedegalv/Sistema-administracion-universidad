@@ -5,7 +5,7 @@
 }
 
 <section class="container-fluid">
-    @using (Html.BeginForm("Authorize", "Login", FormMethod.Post))
+    @using (Html.BeginForm("Autorizar", "Login", FormMethod.Post))
     {
         <div class="row">
 
@@ -13,38 +13,33 @@
                 @Html.AntiForgeryToken()
                 <form class="form-container login-form">
                     <div class="form-group">
-                        <h4 class="text-center font-weight-bold"> Login </h4>
-                        @*<label for="inputDni">DNI</label>
-                            <input type="text" class="form-control" id="inputDni" aria-describeby="dni" placeholder="Ingrese dni">*@
-                        @Html.LabelFor(Model => Model.dni, "DNI: ")<br />
-                        @Html.EditorFor(Model => Model.dni)
+                        <h4 class="text-center font-weight-bold"> Ingrese sus credenciales de usuario:  </h4>
+                        
+                        @Html.LabelFor(Model => Model.Dni, "DNI: ")<br />
+                        @Html.EditorFor(Model => Model.Dni)
                         <br />
                         <div class="alert-danger">
-                            @Html.ValidationMessageFor(Model => Model.dni)
+                            @Html.ValidationMessageFor(Model => Model.Dni)
                         </div>
                     </div>
                     <div class="form-group">
-                        @*<label for="inputLegajo">Legajo</label>
-                            <input type="text" class="form-control" id="inputLegajo" placeholder="Ingrese legajo">*@
-                        @Html.LabelFor(Model => Model.legajo, "Legajo: ")<br />
-                        @Html.EditorFor(Model => Model.legajo)
+                       
+                        @Html.LabelFor(Model => Model.Legajo, "Legajo: ")<br />
+                        @Html.EditorFor(Model => Model.Legajo)
                         <br />
                         <div class="alert-danger">
-                            @Html.ValidationMessageFor(Model => Model.legajo)
+                            @Html.ValidationMessageFor(Model => Model.Legajo)
                         </div>
                     </div>
                     <div class="form-check">
-                        @*<input class="form-check-input" type="checkbox" value="" id="isAdminCheckbox">
-                            <label class="form-check-label" for="isAdminCheckbox">
-                                Es administrador?
-                            </label>*@
-                        @Html.EditorFor(Model => Model.is_admin)
-                        @Html.LabelFor(Model => Model.is_admin, "Es administrador?")
+
+                        @Html.LabelFor(Model => Model.EsAdmin, "Es administrador?")
+                        @Html.EditorFor(Model => Model.EsAdmin)
 
                     </div>
 
                     <div class="form-footer">
-                        <p>@ViewBag.ErrorMessage</p>
+                        <p class="alert-danger">@ViewBag.ErrorMessage</p>
                         <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
                     </div>
                 </form>

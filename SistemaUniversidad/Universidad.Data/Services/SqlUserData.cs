@@ -18,7 +18,7 @@ namespace Universidad.Data.Services
 
         public User FindUser(User user)
         {
-            var userDetails = db.Users.Where(x => x.dni == user.dni && x.legajo == user.legajo && x.is_admin == user.is_admin).FirstOrDefault();
+            var userDetails = db.user.Where(x => x.Dni == user.Dni && x.Legajo == user.Legajo && x.EsAdmin == user.EsAdmin).FirstOrDefault();
             return userDetails;
         }
     }

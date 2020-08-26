@@ -1,0 +1,44 @@
+﻿@model Universidad.Data.Models.User
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Administrador/_AdminLayout.cshtml";
+    if (Session["userId"] == null || !(bool)Session["userIsAdmin"])
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<h2>Bienvenido al menu de administracion</h2>
+
+<div>
+    <h4>Informacion del usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Dni)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dni)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Legajo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Legajo)
+        </dd>
+
+        <dt>
+            @Html.LabelFor(Model => Model.EsAdmin, "Es administrador?")
+        </dt>
+
+        <dd>
+           
+            @Html.DisplayFor(model => model.EsAdmin, "Es administrador")
+        </dd>
+
+    </dl>
+</div>

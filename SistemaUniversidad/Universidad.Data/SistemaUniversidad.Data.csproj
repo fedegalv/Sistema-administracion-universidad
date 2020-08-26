@@ -56,6 +56,11 @@
     <Compile Include="Models\Profesor.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IUniversidadData.cs" />
+    <Compile Include="Services\MateriaDbContext.cs" />
+    <Compile Include="Services\ProfesorDbContext.cs" />
+    <Compile Include="Services\SqlMateriaData.cs" />
+    <Compile Include="Services\SqlProfesorData.cs" />
     <Compile Include="Services\SqlUserData.cs" />
     <Compile Include="Services\UserDbContext.cs" />
   </ItemGroup>

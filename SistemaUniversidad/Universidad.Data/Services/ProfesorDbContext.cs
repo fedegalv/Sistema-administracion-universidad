@@ -8,8 +8,8 @@ using Universidad.Data.Models;
 
 namespace Universidad.Data.Services
 {
-    public class UserDbContext : DbContext
+    class ProfesorDbContext : DbContext
     {
-        public DbSet<User> user { get; set; }
+        public DbSet<Profesor> professor { get; set; }
     }
 }
