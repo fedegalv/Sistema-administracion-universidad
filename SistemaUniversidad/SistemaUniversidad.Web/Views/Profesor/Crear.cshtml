@@ -3,9 +3,13 @@
 @{
     ViewBag.Title = "CrearProfesor";
     Layout = "~/Views/Administrador/_AdminLayout.cshtml";
+    if (Session["userId"] == null || !(bool)Session["userIsAdmin"])
+    {
+        Response.Redirect("~/Login/Index");
+    }
 }
 
-<h2>CrearProfesor</h2>
+<h2>Crear nuevo profesor</h2>
 
 @using (Html.BeginForm()) 
 {
@@ -58,5 +62,5 @@
 }
 
 <div>
-    @Html.ActionLink("Volver a la lista", "Profesores")
+    @Html.ActionLink("Volver a la lista", "Profesores", "Administrador")
 </div>

@@ -1,14 +1,18 @@
 ﻿@model Universidad.Data.Models.Profesor
 
 @{
-    ViewBag.Title = "DetallesProfesor";
+    ViewBag.Title = "Eliminar";
     Layout = "~/Views/Administrador/_AdminLayout.cshtml";
+    if (Session["userId"] == null || !(bool)Session["userIsAdmin"])
+    {
+        Response.Redirect("~/Login/Index");
+    }
 }
 
-<h2>DetallesProfesor</h2>
+<h2>Eliminar profesor</h2>
 
+<h3>¿Esta seguro que desea eliminar este profesor?</h3>
 <div>
-    <h4>Profesor</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -44,8 +48,13 @@
         </dd>
 
     </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" />
+            @Html.ActionLink("Volver a la lista", "Profesores", "Administrador")
+        </div>
+    }
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

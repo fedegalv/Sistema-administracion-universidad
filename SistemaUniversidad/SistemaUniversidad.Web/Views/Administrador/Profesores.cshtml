@@ -9,10 +9,10 @@
     }
 }
 
-<h2>Profesores</h2>
+<h2>Lista de profesores</h2>
 
 <p>
-    @Html.ActionLink("Crear nuevo profesor", "CrearProfesor")
+    @Html.ActionLink("Crear nuevo profesor", "Crear", "Profesor")
 </p>
 <table class="table">
     <tr>
@@ -46,9 +46,9 @@
             @Html.DisplayFor(modelItem => item.Activo)
         </td>
         <td>
-            @Html.ActionLink("Editar", "EditarProfesor", new { id=item.Id }) |
-            @Html.ActionLink("Detalles", "DetallesProfesor", new { id=item.Id }) |
-            @Html.ActionLink("Eliminar", "EliminarProfesor", new { id=item.Id })
+            @Html.ActionLink("Editar", "Editar", "Profesor", new { id=item.Id }, null)
+            @Html.ActionLink("Detalles", "Detalles", "Profesor", new { id=item.Id }, null)
+            @Html.ActionLink("Eliminar", "Eliminar", "Profesor", new { id=item.Id }, null)
         </td>
     </tr>
 }

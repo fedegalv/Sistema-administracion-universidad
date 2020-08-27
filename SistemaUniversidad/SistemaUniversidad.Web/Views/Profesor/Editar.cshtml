@@ -3,11 +3,15 @@
 @{
     ViewBag.Title = "EditarProfesor";
     Layout = "~/Views/Administrador/_AdminLayout.cshtml";
+    if (Session["userId"] == null || !(bool)Session["userIsAdmin"])
+    {
+        Response.Redirect("~/Login/Index");
+    }
 }
 
-<h2>EditarProfesor</h2>
+<h2>Editar datos del profesor</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Editar", "Profesor", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     
@@ -60,5 +64,5 @@
 }
 
 <div>
-    @Html.ActionLink("Volver a la lista", "Profesores")
+    @Html.ActionLink("Volver a la lista", "Profesores", "Administrador")
 </div>
