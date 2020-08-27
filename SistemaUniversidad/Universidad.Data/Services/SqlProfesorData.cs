@@ -8,7 +8,7 @@ using Universidad.Data.Models;
 
 namespace Universidad.Data.Services
 {
-    class SqlProfesorData : IUniversidadData<Profesor>
+    public class SqlProfesorData : IUniversidadData<Profesor>
     {
         private ProfesorDbContext db;
         public SqlProfesorData()

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Universidad.Data.Models.Profesor>
+
+@{
+    ViewBag.Title = "Profesores";
+    Layout = "~/Views/Administrador/_AdminLayout.cshtml";
+    if (Session["userId"] == null || !(bool)Session["userIsAdmin"])
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<h2>Profesores</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo profesor", "CrearProfesor")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dni)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Activo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dni)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Activo)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "EditarProfesor", new { id=item.Id }) |
+            @Html.ActionLink("Detalles", "DetallesProfesor", new { id=item.Id }) |
+            @Html.ActionLink("Eliminar", "EliminarProfesor", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

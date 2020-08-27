@@ -181,6 +181,11 @@
     <Content Include="Views\Alumno\_AlumnoLayout.cshtml" />
     <Content Include="Views\Alumno\Index.cshtml" />
     <Content Include="Views\Administrador\Index.cshtml" />
+    <Content Include="Views\Administrador\Profesores.cshtml" />
+    <Content Include="Views\Administrador\EditarProfesor.cshtml" />
+    <Content Include="Views\Administrador\CrearProfesor.cshtml" />
+    <Content Include="Views\Administrador\DetallesProfesor.cshtml" />
+    <Content Include="Views\Administrador\EliminarProfesor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Universidad.Data\SistemaUniversidad.Data.csproj">

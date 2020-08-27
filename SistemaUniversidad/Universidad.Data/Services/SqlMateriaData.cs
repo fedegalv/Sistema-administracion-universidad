@@ -8,9 +8,9 @@ using Universidad.Data.Models;
 
 namespace Universidad.Data.Services
 {
-    class SqlMateriaData : IUniversidadData<Materia>
+    public class SqlMateriaData : IUniversidadData<Materia>
     {
-        MateriaDbContext db;
+        private MateriaDbContext db;
         public SqlMateriaData()
         {
             db = new MateriaDbContext();

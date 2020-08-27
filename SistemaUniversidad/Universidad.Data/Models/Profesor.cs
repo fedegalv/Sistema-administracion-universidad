@@ -25,6 +25,7 @@ namespace Universidad.Data.Models
         [Column("dni")]
         [Required]
         [RegularExpression("^[0-9]*$", ErrorMessage = "Campo DNI debe ser numerico")]
+        [StringLength(8, MinimumLength = 8,ErrorMessage = "Campo DNI requiere 8 caracteres")]
         public string Dni { get; set; }
         [Column("is_active")]
         public bool Activo { get; set; }
