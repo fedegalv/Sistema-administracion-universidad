@@ -1,0 +1,54 @@
+﻿@model Universidad.Data.Models.Materia
+
+@{
+    ViewBag.Title = "Detalles de la materia";
+    Layout = "~/Views/Administrador/_AdminLayout.cshtml";
+    if (Session["userId"] == null || !(bool)Session["userIsAdmin"])
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Horario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Horario)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Profesor")
+        </dt>
+        @* MUESTRA UNA VISTA PARCIAL, CON EL PROFESOR DE LA MATERIA *@
+        <dd>
+            @Html.Action("_mostrarProfesor", "Materia", new { id = Model.IdProfesor })
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Cupo maximo")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CupoMaximoAlumnos)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar", "Materia", new { id = Model.Id }, null) |
+    @Html.ActionLink("Volver a la lista", "Materias", "Administrador")
+</p>

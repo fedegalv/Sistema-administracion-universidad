@@ -1,0 +1,60 @@
+﻿@model Universidad.Data.Models.Materia
+
+@{
+    ViewBag.Title = "Eliminar materia";
+    Layout = "~/Views/Administrador/_AdminLayout.cshtml";
+    if (Session["userId"] == null || !(bool)Session["userIsAdmin"])
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Esta seguro que desea eliminar esta materia?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Horario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Horario)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Profesor")
+        </dt>
+        @* MUESTRA UNA VISTA PARCIAL, CON EL PROFESOR DE LA MATERIA *@
+        <dd>
+            @Html.Action("_mostrarProfesor", "Materia", new { id = Model.IdProfesor })
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Cupo maximo")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CupoMaximoAlumnos)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Eliminar" class="btn btn-default" /> |
+    @Html.ActionLink("Volver a la lista", "Materias", "Administrador")
+</div>
+    }
+</div>

@@ -25,7 +25,7 @@
                 {
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Profesores", "Index", "Administrador")</li>
+                        
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
 
@@ -34,9 +34,6 @@
                                 <i class="fa fa-address-card-o" aria-hidden="true"></i> Mi Cuenta
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                                @*<a class="dropdown-item" href="">Inicio sesion</a>*@
-
                                 <a class="dropdown-item">@Html.ActionLink("Cerrar sesion", "LogOut", "Login")</a>
                             </div>
                         </li>

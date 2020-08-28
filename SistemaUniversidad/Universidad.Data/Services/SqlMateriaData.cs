@@ -21,7 +21,7 @@ namespace Universidad.Data.Services
         /// <param name="materia"></param>
         public void Agregar(Materia materia)
         {
-            db.subject.Add(materia);
+            db.assignment.Add(materia);
             db.SaveChanges();
         }
         /// <summary>
@@ -31,7 +31,7 @@ namespace Universidad.Data.Services
         /// <returns> Materia encontrada o null</returns>
         public Materia Obtener(int id)
         {
-            var materia = db.subject.FirstOrDefault(x => x.Id == id);
+            var materia = db.assignment.FirstOrDefault(x => x.Id == id);
             return materia;
         }
 
@@ -41,7 +41,7 @@ namespace Universidad.Data.Services
         /// <returns> IEnumerable de las materias</returns>
         public IEnumerable<Materia> ObtenerTodos()
         {
-            return db.subject;
+            return db.assignment;
         }
         /// <summary>
         /// Remueve la materia de la base de datos
@@ -49,7 +49,7 @@ namespace Universidad.Data.Services
         /// <param name="id"></param>
         public void Remover(int id)
         {
-            var materia = db.subject.Find(id);
+            var materia = db.assignment.Find(id);
             var entrada = db.Entry(materia);
             entrada.State = System.Data.Entity.EntityState.Deleted;
             db.SaveChanges();

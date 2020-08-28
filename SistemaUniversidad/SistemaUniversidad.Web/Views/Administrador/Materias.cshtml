@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Universidad.Data.Models.Materia>
+
+@{
+    ViewBag.Title = "Materias";
+    Layout = "~/Views/Administrador/_AdminLayout.cshtml";
+    if (Session["userId"] == null || !(bool)Session["userIsAdmin"])
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<h2>Lista de materias</h2>
+
+<p>
+    @Html.ActionLink("Crear nueva materia", "Crear", "Materia")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Horario)
+        </th>
+        <th>
+            @Html.DisplayName("Profesor")
+        </th>
+        <th>
+            @Html.DisplayName("Cupo maximo")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Horario)
+            </td>
+            <td>
+                @Html.Action("_mostrarProfesor", "Materia", new { id = item.IdProfesor })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CupoMaximoAlumnos)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Editar", "Materia", new { id = item.Id }, null) |
+                @Html.ActionLink("Detalles", "Detalles", "Materia", new { id = item.Id }, null) |
+                @Html.ActionLink("Eliminar", "Eliminar", "Materia", new { id = item.Id }, null)
+            </td>
+        </tr>
+    }
+
+</table>

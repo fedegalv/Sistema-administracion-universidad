@@ -21,36 +21,36 @@ namespace SistemaUniversidad.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Autorizar(User userModel)
+        // COMPRUEBA QUE EL USUARIO SEA VALIDO
+        public ActionResult Autorizar(User usuarioProvisto)
         {
             if (ModelState.IsValid)
             {
-                var userDetails = db.FindUser(userModel);
-                if (userDetails == null)
+                var usuario = db.EncontrarUsuario(usuarioProvisto);
+                if (usuario == null)
                 {
                     ViewBag.ErrorMessage = "DNI o Legajo no encontrado";
                     return View("Index");
                 }
                 else
                 {
-                    //ViewBag.ErrorMessage = "Encontrado";
-                    Session["userId"] = userDetails.Id;
-                    Session["userDni"] = userDetails.Dni;
-                    Session["userIsAdmin"] = userDetails.EsAdmin;
+                    
+                    Session["userId"] = usuario.Id;
+                    Session["userDni"] = usuario.Dni;
+                    Session["userIsAdmin"] = usuario.EsAdmin;
                     if ((bool)Session["userIsadmin"])
                     {
-                        //TempData["user"] = userDetails;
-                        Session["user"] = userDetails;
+                        Session["user"] = usuario;
                         return RedirectToAction("Index", "Administrador");
                     }
                     else if (!(bool)Session["userisAdmin"])
                     {
-                        Session["user"] = userDetails;
+                        Session["user"] = usuario;
                         return RedirectToAction("Index", "Alumno");
                     }
                 }
             }
-            return View(userModel);
+            return View(usuarioProvisto);
         }
         public ActionResult LogOut()
         {

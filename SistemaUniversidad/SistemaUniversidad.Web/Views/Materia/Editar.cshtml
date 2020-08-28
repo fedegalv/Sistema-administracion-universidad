@@ -1,7 +1,7 @@
-﻿@model Universidad.Data.Models.Profesor
+﻿@model Universidad.Data.Models.Materia
 
 @{
-    ViewBag.Title = "Editar profesor";
+    ViewBag.Title = "Editar materia";
     Layout = "~/Views/Administrador/_AdminLayout.cshtml";
     if (Session["userId"] == null || !(bool)Session["userIsAdmin"])
     {
@@ -9,9 +9,9 @@
     }
 }
 
-<h2>Editar datos del profesor:</h2>
+<h2>Editar materia</h2>
 
-@using (Html.BeginForm("Editar", "Profesor", FormMethod.Post))
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
@@ -29,28 +29,27 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Apellido, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Horario, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Apellido, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })
+                @Html.EnumDropDownListFor(model => model.Horario, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Horario, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Dni, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IdProfesor,"Profesor", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Dni, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Dni, "", new { @class = "text-danger" })
+                @* LISTA DE PROFESORES  *@
+                @Html.DropDownListFor(model => model.IdProfesor, (IEnumerable<SelectListItem>)ViewData["profesorLista"], new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IdProfesor, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Activo, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CupoMaximoAlumnos,"Cupo maximo", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Activo)
-                    @Html.ValidationMessageFor(model => model.Activo, "", new { @class = "text-danger" })
-                </div>
+                @Html.EditorFor(model => model.CupoMaximoAlumnos, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CupoMaximoAlumnos, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -63,5 +62,5 @@
 }
 
 <div>
-    @Html.ActionLink("Volver a la lista", "Profesores", "Administrador")
+    @Html.ActionLink("Volver a la lista", "Materias", "Administrador")
 </div>

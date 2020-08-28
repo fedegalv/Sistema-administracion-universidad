@@ -46,9 +46,9 @@
             @Html.DisplayFor(modelItem => item.Activo)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Editar", "Profesor", new { id=item.Id }, null)
-            @Html.ActionLink("Detalles", "Detalles", "Profesor", new { id=item.Id }, null)
-            @Html.ActionLink("Eliminar", "Eliminar", "Profesor", new { id=item.Id }, null)
+            @Html.ActionLink("Editar", "Editar", "Profesor", new { id = item.Id }, null) |
+            @Html.ActionLink("Detalles", "Detalles", "Profesor", new { id = item.Id }, null) |
+            @Html.ActionLink("Eliminar", "Eliminar", "Profesor", new { id = item.Id }, null)
         </td>
     </tr>
 }

@@ -133,6 +133,7 @@
     <Compile Include="Controllers\AlumnoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MateriaController.cs" />
     <Compile Include="Controllers\ProfesorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -187,6 +188,12 @@
     <Content Include="Views\Profesor\Crear.cshtml" />
     <Content Include="Views\Profesor\Detalles.cshtml" />
     <Content Include="Views\Profesor\Eliminar.cshtml" />
+    <Content Include="Views\Materia\_mostrarProfesor.cshtml" />
+    <Content Include="Views\Materia\Crear.cshtml" />
+    <Content Include="Views\Administrador\Materias.cshtml" />
+    <Content Include="Views\Materia\Editar.cshtml" />
+    <Content Include="Views\Materia\Eliminar.cshtml" />
+    <Content Include="Views\Materia\Detalles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Universidad.Data\SistemaUniversidad.Data.csproj">

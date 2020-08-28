@@ -18,11 +18,26 @@ namespace SistemaUniversidad.Web.Controllers
             User model = (User)Session["user"];
             return View(model);
         }
+        [HttpGet]
         public ActionResult Profesores()
         {
             SqlProfesorData sqlProfesor = new SqlProfesorData();
             var listaProfesor = sqlProfesor.ObtenerTodos();
             return View(listaProfesor);
+        }
+        [HttpGet]
+        public ActionResult Materias()
+        {
+            SqlMateriaData sqlMateria = new SqlMateriaData();
+            var listaMaterias = sqlMateria.ObtenerTodos();
+            return View(listaMaterias);
+        }
+
+        public ActionResult _mostrarProfesor(int id)
+        {
+            SqlProfesorData sqlProfesor = new SqlProfesorData();
+            Profesor profesor = sqlProfesor.Obtener(id);
+            return PartialView(profesor);
         }
 
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Universidad.Data.Models
 {
-    [Table("subject")]
+    [Table("assignment")]
     public class Materia
     {
         [Column("id")]
@@ -26,14 +26,12 @@ namespace Universidad.Data.Models
         [Column("schedule")]
         public EHorario Horario { get; set; }
 
-        [Column("professor")]
-        public Profesor Profesor { get; set; }
-
+        //[Column("professor_id")]
+        //public int IdProfesor { get; set; }
         [Column("professor_id")]
-        [ForeignKey("Profesor")]
+        [Required(ErrorMessage = "Se requiere un profesor")]
         public int IdProfesor { get; set; }
 
-        
         [Required]
         [Column("student_max_capacity")]
         [Range(0, int.MaxValue, ErrorMessage = "Ingrese un numero valido")]

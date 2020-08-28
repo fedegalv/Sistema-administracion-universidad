@@ -21,26 +21,27 @@
                 @Html.ActionLink("Administracion universidad", "Index", "Administrador", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-               
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Inicio", "Index", "Administrador")</li>
-                        <li>@Html.ActionLink("Profesores", "Profesores", "Administrador")</li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-address-card-o" aria-hidden="true"></i> Mi Cuenta
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Inicio", "Index", "Administrador")</li>
+                    <li>@Html.ActionLink("Profesores", "Profesores", "Administrador")</li>
+                    <li>@Html.ActionLink("Materias", "Materias", "Administrador")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
 
-                                @*<a class="dropdown-item" href="">Inicio sesion</a>*@
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-address-card-o" aria-hidden="true"></i> Mi Cuenta
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                                <a class="dropdown-item">@Html.ActionLink("Cerrar sesion", "LogOut", "Login")</a>
-                            </div>
-                        </li>
+                            @*<a class="dropdown-item" href="">Inicio sesion</a>*@
 
-                    </ul>
+                            <a class="dropdown-item">@Html.ActionLink("Cerrar sesion", "LogOut", "Login")</a>
+                        </div>
+                    </li>
+
+                </ul>
             </div>
         </div>
     </div>
