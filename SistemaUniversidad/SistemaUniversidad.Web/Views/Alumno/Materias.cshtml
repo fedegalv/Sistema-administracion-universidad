@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Universidad.Data.Models.Materia>
+
+@{
+    ViewBag.Title = "Materias";
+    Layout = "~/Views/Alumno/_AlumnoLayout.cshtml";
+}
+
+<h2>Lista de materias disponibles</h2>
+<h4>Para anotarse en una materia, seleccione la opcion de "Detalles".</h4>
+
+<div class="alert-warning error-messages-margin">@ViewData["error"]</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Horario)
+        </th>
+        <th>
+            @Html.DisplayName("Profesor")
+        </th>
+        <th>
+            @Html.DisplayName("Cupos disponibles")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Horario)
+            </td>
+            <td>
+                @Html.Action("_mostrarProfesor", "Materia", new { id = item.IdProfesor })
+            </td>
+            <td>
+                @(item.CupoMaximoAlumnos - item.CupoUtilizado)
+            </td>
+            <td>
+                @Html.ActionLink("Detalles", "Detalles", new { id = item.Id })
+
+            </td>
+        </tr>
+    }
+
+</table>

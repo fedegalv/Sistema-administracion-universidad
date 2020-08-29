@@ -10,8 +10,8 @@ namespace Universidad.Data.Services
     {
         IEnumerable<T> ObtenerTodos();
         T Obtener(int id);
-        void Agregar(T restaurant);
-        void Actualizar(T restaurant);
+        void Agregar(T objeto);
+        void Actualizar(T objeto);
         void Remover(int id);
     }
 }

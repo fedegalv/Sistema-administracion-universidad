@@ -34,7 +34,6 @@ namespace SistemaUniversidad.Web.Controllers
                 }
                 else
                 {
-                    
                     Session["userId"] = usuario.Id;
                     Session["userDni"] = usuario.Dni;
                     Session["userIsAdmin"] = usuario.EsAdmin;
@@ -46,6 +45,16 @@ namespace SistemaUniversidad.Web.Controllers
                     else if (!(bool)Session["userisAdmin"])
                     {
                         Session["user"] = usuario;
+                        SqlAlumnoData sqlAlumno = new SqlAlumnoData();
+                        var alumno = sqlAlumno.Obtener(usuario.Id);
+                        if (alumno == null)
+                        {
+                            Alumno alumnoNuevo = new Alumno
+                            {
+                                IdUsuario = usuario.Id,
+                            };
+                            sqlAlumno.Agregar(alumnoNuevo);
+                        }
                         return RedirectToAction("Index", "Alumno");
                     }
                 }

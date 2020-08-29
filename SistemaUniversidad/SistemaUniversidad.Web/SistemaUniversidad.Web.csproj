@@ -194,6 +194,8 @@
     <Content Include="Views\Materia\Editar.cshtml" />
     <Content Include="Views\Materia\Eliminar.cshtml" />
     <Content Include="Views\Materia\Detalles.cshtml" />
+    <Content Include="Views\Alumno\Materias.cshtml" />
+    <Content Include="Views\Alumno\Detalles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Universidad.Data\SistemaUniversidad.Data.csproj">

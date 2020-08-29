@@ -37,6 +37,11 @@ namespace Universidad.Data.Models
         [Range(0, int.MaxValue, ErrorMessage = "Ingrese un numero valido")]
         public int CupoMaximoAlumnos { get; set; }
 
+        [Column("used_capacity")]
+        [Display(Name = "Alumnos anotados")]
+
+        public int CupoUtilizado { get; set; }
+
 
     }
 }

@@ -51,14 +51,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Alumno.cs" />
     <Compile Include="Models\EHorario.cs" />
     <Compile Include="Models\Materia.cs" />
     <Compile Include="Models\Profesor.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AlumnoDbContext.cs" />
     <Compile Include="Services\IUniversidadData.cs" />
     <Compile Include="Services\MateriaDbContext.cs" />
     <Compile Include="Services\ProfesorDbContext.cs" />
+    <Compile Include="Services\SqlAlumnoData.cs" />
     <Compile Include="Services\SqlMateriaData.cs" />
     <Compile Include="Services\SqlProfesorData.cs" />
     <Compile Include="Services\SqlUserData.cs" />
