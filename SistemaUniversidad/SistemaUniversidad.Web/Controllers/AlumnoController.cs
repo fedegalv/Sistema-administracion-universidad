@@ -1,6 +1,7 @@
 ﻿using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -79,6 +80,25 @@ namespace SistemaUniversidad.Web.Controllers
                 TempData["error"] = "ERROR no se pudo realizar la accion";
             }
             return RedirectToAction("Materias", "Alumno");
+        }
+
+        [HttpGet]
+        /// SE PODRIA GUARDA LA LISTA EN UN VIEWDATA PARA NO TENER QUE PEDIR CONSTANTEMENTE A LA BASE DE DATOS, Y HACERLO UNA VEZ?
+        public ActionResult _mostrarMateriasAlumnos(int id)
+        {
+            SqlAlumnoData sqlAlumno = new SqlAlumnoData();
+            SqlMateriaData sqlMateria = new SqlMateriaData();
+            var alumno = sqlAlumno.Obtener(id);
+            List<Materia> listaMaterias = new List<Materia>(); 
+            foreach (var materia in sqlMateria.ObtenerTodos())
+            {
+                if (alumno.ObtenerMateriaDeLista(materia.Id))
+                {
+                    listaMaterias.Add(materia);
+                }
+            }
+
+            return PartialView(listaMaterias);
         }
     }
 }

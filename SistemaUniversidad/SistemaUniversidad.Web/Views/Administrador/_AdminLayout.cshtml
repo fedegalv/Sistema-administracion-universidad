@@ -9,7 +9,7 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
+<body class="container-fluid">
     <div class="navbar navbar-expand-lg navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -34,9 +34,6 @@
                             <i class="fa fa-address-card-o" aria-hidden="true"></i> Mi Cuenta
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                            @*<a class="dropdown-item" href="">Inicio sesion</a>*@
-
                             <a class="dropdown-item">@Html.ActionLink("Cerrar sesion", "LogOut", "Login")</a>
                         </div>
                     </li>

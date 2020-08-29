@@ -46,9 +46,16 @@
             @Html.DisplayFor(modelItem => item.Activo)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Editar", "Profesor", new { id = item.Id }, null) |
-            @Html.ActionLink("Detalles", "Detalles", "Profesor", new { id = item.Id }, null) |
-            @Html.ActionLink("Eliminar", "Eliminar", "Profesor", new { id = item.Id }, null)
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Acciones
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-item">@Html.ActionLink("Editar", "Editar", "Profesor", new { id = item.Id }, null)</div>
+                    <div class="dropdown-item">@Html.ActionLink("Detalles", "Detalles", "Profesor", new { id = item.Id }, null)</div>
+                    <div class="dropdown-item">@Html.ActionLink("Eliminar", "Eliminar", "Profesor", new { id = item.Id }, null)</div>
+                </div>
+            </div>
         </td>
     </tr>
 }

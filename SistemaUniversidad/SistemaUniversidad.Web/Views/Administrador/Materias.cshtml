@@ -28,6 +28,9 @@
         <th>
             @Html.DisplayName("Cupo maximo")
         </th>
+        <th>
+            @Html.DisplayName("Cupo utilizado")
+        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -46,9 +49,19 @@
                 @Html.DisplayFor(modelItem => item.CupoMaximoAlumnos)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Editar", "Materia", new { id = item.Id }, null) |
-                @Html.ActionLink("Detalles", "Detalles", "Materia", new { id = item.Id }, null) |
-                @Html.ActionLink("Eliminar", "Eliminar", "Materia", new { id = item.Id }, null)
+                @Html.DisplayFor(modelItem => item.CupoUtilizado)
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Acciones
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-item">@Html.ActionLink("Editar", "Editar", "Materia", new { id = item.Id }, null)</div>
+                        <div class="dropdown-item">@Html.ActionLink("Detalles", "Detalles", "Materia", new { id = item.Id }, null) </div>
+                        <div class="dropdown-item">@Html.ActionLink("Eliminar", "Eliminar", "Materia", new { id = item.Id }, null)</div>
+                    </div>
+                </div>
             </td>
         </tr>
     }

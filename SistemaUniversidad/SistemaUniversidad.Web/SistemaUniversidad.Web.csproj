@@ -196,6 +196,7 @@
     <Content Include="Views\Materia\Detalles.cshtml" />
     <Content Include="Views\Alumno\Materias.cshtml" />
     <Content Include="Views\Alumno\Detalles.cshtml" />
+    <Content Include="Views\Alumno\_mostrarMateriasAlumnos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Universidad.Data\SistemaUniversidad.Data.csproj">

@@ -1,0 +1,40 @@
+﻿@using Universidad.Data.Models;
+@model IEnumerable<Universidad.Data.Models.Materia>
+@if (Model.Count() > 0)
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayName("Nombre")
+            </th>
+            <th>
+                @Html.DisplayName("Horario")
+            </th>
+            <th>
+                @Html.DisplayName("Profesor")
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Horario)
+                </td>
+                <td>
+                    @Html.Action("_mostrarProfesor", "Materia", new { id = item.IdProfesor })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <p>No hay materias para mostrar</p>
+}
+

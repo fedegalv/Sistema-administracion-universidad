@@ -46,6 +46,7 @@ namespace SistemaUniversidad.Web.Controllers
                     {
                         Session["user"] = usuario;
                         SqlAlumnoData sqlAlumno = new SqlAlumnoData();
+
                         var alumno = sqlAlumno.Obtener(usuario.Id);
                         if (alumno == null)
                         {

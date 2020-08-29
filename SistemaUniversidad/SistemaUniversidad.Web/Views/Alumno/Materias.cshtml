@@ -42,7 +42,15 @@
                 @(item.CupoMaximoAlumnos - item.CupoUtilizado)
             </td>
             <td>
-                @Html.ActionLink("Detalles", "Detalles", new { id = item.Id })
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Acciones
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-item">@Html.ActionLink("Detalles", "Detalles", "Alumno", new { id = item.Id }, null)</div>
+                    </div>
+                </div>
+                
 
             </td>
         </tr>
