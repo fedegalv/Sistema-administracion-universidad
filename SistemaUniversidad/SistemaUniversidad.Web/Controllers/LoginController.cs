@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.Ajax.Utilities;
 using SistemaUniversidad;
+using Universidad.Data.Business;
 using Universidad.Data.Models;
 using Universidad.Data.Services;
 
@@ -27,7 +28,7 @@ namespace SistemaUniversidad.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var usuario = db.EncontrarUsuario(usuarioProvisto);
+                var usuario = LogInBusiness.BucarUsuario(usuarioProvisto);
                 if (usuario == null)
                 {
                     ViewBag.ErrorMessage = "DNI o Legajo no encontrado";
@@ -48,17 +49,7 @@ namespace SistemaUniversidad.Web.Controllers
                     {
                         // SI NO ES ADMINISTRADOR, SE CREA UN ALUMNO NUEVO SI CORRESPONDE
                         Session["user"] = usuario;
-                        SqlAlumnoData sqlAlumno = new SqlAlumnoData();
-
-                        var alumno = sqlAlumno.Obtener(usuario.Id);
-                        if (alumno == null)
-                        {
-                            Alumno alumnoNuevo = new Alumno
-                            {
-                                IdUsuario = usuario.Id,
-                            };
-                            sqlAlumno.Agregar(alumnoNuevo);
-                        }
+                        LogInBusiness.CrearAlumno(usuario.Id);
                         return RedirectToAction("Index", "Alumno");
                     }
                 }

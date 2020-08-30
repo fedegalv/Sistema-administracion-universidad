@@ -10,12 +10,15 @@ namespace SistemaUniversidad.Web.Controllers
 {
     public class ProfesorController : Controller
     {
-        // GET: Profesor
+        private SqlProfesorData sqlProfesor;
+        public ProfesorController()
+        {
+            sqlProfesor = new SqlProfesorData();
+        }
 
         [HttpGet]
         public ActionResult Editar(int id)
         {
-            SqlProfesorData sqlProfesor = new SqlProfesorData();
             Profesor profesor = sqlProfesor.Obtener(id);
             return View("~/Views/Profesor/Editar.cshtml", profesor);
         }
@@ -27,7 +30,6 @@ namespace SistemaUniversidad.Web.Controllers
             {
                 if (profesor != null)
                 {
-                    SqlProfesorData sqlProfesor = new SqlProfesorData();
                     sqlProfesor.Actualizar(profesor);
                     return RedirectToAction("Profesores", "Administrador");
                 }
@@ -38,7 +40,6 @@ namespace SistemaUniversidad.Web.Controllers
         [HttpGet]
         public ActionResult Eliminar(int id)
         {
-            SqlProfesorData sqlProfesor = new SqlProfesorData();
             Profesor profesor = sqlProfesor.Obtener(id);
             return View("~/Views/Profesor/Eliminar.cshtml", profesor);
         }
@@ -50,7 +51,6 @@ namespace SistemaUniversidad.Web.Controllers
 
             if (profesor != null)
             {
-                SqlProfesorData sqlProfesor = new SqlProfesorData();
                 sqlProfesor.Remover(profesor.Id);
                 return RedirectToAction("Profesores", "Administrador");
             }
@@ -60,7 +60,6 @@ namespace SistemaUniversidad.Web.Controllers
         [HttpGet]
         public ActionResult Detalles(int id)
         {
-            SqlProfesorData sqlProfesor = new SqlProfesorData();
             Profesor profesor = sqlProfesor.Obtener(id);
             return View("~/Views/Profesor/Detalles.cshtml", profesor);
         }
@@ -77,7 +76,6 @@ namespace SistemaUniversidad.Web.Controllers
             {
                 if (profesor != null)
                 {
-                    SqlProfesorData sqlProfesor = new SqlProfesorData();
                     sqlProfesor.Agregar(profesor);
                     return RedirectToAction("Profesores", "Administrador");
                 }

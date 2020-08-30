@@ -10,10 +10,16 @@ namespace SistemaUniversidad.Web.Controllers
 {
     public class MateriaController : Controller
     {
+        private SqlProfesorData sqlProfesor;
+        private SqlMateriaData sqlMateria;
+        public MateriaController()
+        {
+            sqlProfesor = new SqlProfesorData();
+            sqlMateria = new SqlMateriaData();
+        }
         // GET: Materia
         public ActionResult Crear()
         {
-            SqlProfesorData sqlProfesor = new SqlProfesorData();
             var profesorLista = new SelectList(sqlProfesor.ObtenerTodos().ToList(), "Id", "Apellido");
             ViewData["profesorLista"] = profesorLista;
             return View("~/Views/Materia/Crear.cshtml");
@@ -22,27 +28,23 @@ namespace SistemaUniversidad.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Crear(Materia materia)
         {
-   
-                if (ModelState.IsValid)
+
+            if (ModelState.IsValid)
+            {
+                if (materia != null)
                 {
-                    if (materia != null)
-                    {
-                        SqlMateriaData sqlMateria = new SqlMateriaData();
-                        sqlMateria.Agregar(materia);
-                        return RedirectToAction("Materias", "Administrador");
-                    }
+                    sqlMateria.Agregar(materia);
+                    return RedirectToAction("Materias", "Administrador");
                 }
-                SqlProfesorData sqlProfesor = new SqlProfesorData();
-                var profesorLista = new SelectList(sqlProfesor.ObtenerTodos().ToList(), "Id", "Apellido");
-                ViewData["profesorLista"] = profesorLista;
-                return View("~/Views/Materia/Crear.cshtml", materia);
- 
+            }
+            var profesorLista = new SelectList(sqlProfesor.ObtenerTodos().ToList(), "Id", "Apellido");
+            ViewData["profesorLista"] = profesorLista;
+            return View("~/Views/Materia/Crear.cshtml", materia);
+
         }
         [HttpGet]
         public ActionResult Editar(int id)
         {
-            SqlMateriaData sqlMateria = new SqlMateriaData();
-            SqlProfesorData sqlProfesor = new SqlProfesorData();
             var profesorLista = new SelectList(sqlProfesor.ObtenerTodos().ToList(), "Id", "Apellido");
             ViewData["profesorLista"] = profesorLista;
             Materia materia = sqlMateria.Obtener(id);
@@ -56,12 +58,10 @@ namespace SistemaUniversidad.Web.Controllers
             {
                 if (materia != null)
                 {
-                    SqlMateriaData sqlMateria = new SqlMateriaData();
                     sqlMateria.Actualizar(materia);
                     return RedirectToAction("Materias", "Administrador");
                 }
             }
-            SqlProfesorData sqlProfesor = new SqlProfesorData();
             var profesorLista = new SelectList(sqlProfesor.ObtenerTodos().ToList(), "Id", "Apellido");
             ViewData["profesorLista"] = profesorLista;
             return View("~/Views/Materia/Editar.cshtml", materia);
@@ -69,7 +69,6 @@ namespace SistemaUniversidad.Web.Controllers
         [HttpGet]
         public ActionResult Eliminar(int id)
         {
-            SqlMateriaData sqlMateria = new SqlMateriaData();
             Materia materia = sqlMateria.Obtener(id);
             return View("~/Views/Materia/Eliminar.cshtml", materia);
         }
@@ -81,7 +80,6 @@ namespace SistemaUniversidad.Web.Controllers
 
             if (materia != null)
             {
-                SqlMateriaData sqlMateria = new SqlMateriaData();
                 sqlMateria.Remover(materia.Id);
                 return RedirectToAction("Materias", "Administrador");
             }
@@ -91,7 +89,6 @@ namespace SistemaUniversidad.Web.Controllers
         [HttpGet]
         public ActionResult Detalles(int id)
         {
-            SqlMateriaData sqlMateria = new SqlMateriaData();
             Materia materia = sqlMateria.Obtener(id);
             return View("~/Views/Materia/Detalles.cshtml", materia);
         }
@@ -101,7 +98,6 @@ namespace SistemaUniversidad.Web.Controllers
         [HttpGet]
         public ActionResult _mostrarProfesor(int id)
         {
-            SqlProfesorData sqlProfesor = new SqlProfesorData();
             var profesor = sqlProfesor.Obtener(id);
             return PartialView(profesor);
         }

@@ -25,8 +25,12 @@ namespace Universidad.Data.Models
 
         public bool ObtenerMateriaDeLista(int id)
         {
-            return ListaMaterias.Split(',').Contains(id.ToString());
-
+            if (ListaMaterias != null)
+            {
+                return ListaMaterias.Split(',').Contains(id.ToString());
+            }
+            return false; 
+            
         }
     }
 

@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\AlumnoBusiness.cs" />
+    <Compile Include="Business\LogInBusiness.cs" />
     <Compile Include="Models\Alumno.cs" />
     <Compile Include="Models\EHorario.cs" />
     <Compile Include="Models\Materia.cs" />
