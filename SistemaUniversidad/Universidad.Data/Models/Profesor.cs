@@ -16,11 +16,11 @@ namespace Universidad.Data.Models
         public int Id { get; set; }
         [Column("name")]
         [Required]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Debe usar letras unicamente")]
+        [RegularExpression(@"^[a-zA-Z ]+$", ErrorMessage = "Debe usar letras unicamente")]
         public string Nombre { get; set; }
         [Column("last_name")]
         [Required]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Debe usar letras unicamente")]
+        [RegularExpression(@"^[a-zA-Z ]+$", ErrorMessage = "Debe usar letras unicamente")]
         public string Apellido { get; set; }
         [Column("dni")]
         [Required]

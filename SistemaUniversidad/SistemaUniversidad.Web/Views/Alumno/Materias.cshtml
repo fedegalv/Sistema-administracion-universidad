@@ -3,6 +3,10 @@
 @{
     ViewBag.Title = "Materias";
     Layout = "~/Views/Alumno/_AlumnoLayout.cshtml";
+    if (Session["userId"] == null || (bool)Session["userIsAdmin"])
+    {
+        Response.Redirect("~/Login/Index");
+    }
 }
 
 <h2>Lista de materias disponibles</h2>
@@ -42,12 +46,12 @@
                 @(item.CupoMaximoAlumnos - item.CupoUtilizado)
             </td>
             <td>
-                <div class="dropdown">
+                <div class="dropdown ">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Acciones
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <div class="dropdown-item">@Html.ActionLink("Detalles", "Detalles", "Alumno", new { id = item.Id }, null)</div>
+                        <div class="dropdown-item text-center">@Html.ActionLink("Detalles", "Detalles", "Alumno", new { id = item.Id }, null)</div>
                     </div>
                 </div>
                 

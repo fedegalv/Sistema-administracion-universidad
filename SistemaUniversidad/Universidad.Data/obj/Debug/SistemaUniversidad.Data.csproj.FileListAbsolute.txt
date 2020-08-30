@@ -9,3 +9,4 @@ D:\ASP net\Sistema-administracion-universidad\SistemaUniversidad\Universidad.Dat
 D:\ASP net\Sistema-administracion-universidad\SistemaUniversidad\Universidad.Data\obj\Debug\SistemaUniversidad.Data.csproj.CopyComplete
 D:\ASP net\Sistema-administracion-universidad\SistemaUniversidad\Universidad.Data\obj\Debug\Universidad.Data.dll
 D:\ASP net\Sistema-administracion-universidad\SistemaUniversidad\Universidad.Data\obj\Debug\Universidad.Data.pdb
+D:\ASP net\Sistema-administracion-universidad\SistemaUniversidad\Universidad.Data\obj\Debug\SistemaUniversidad.Data.csprojAssemblyReference.cache

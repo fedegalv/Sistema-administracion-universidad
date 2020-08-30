@@ -44,3 +44,6 @@ textarea {
     border: 1px solid #000000;
     color: black !important;
 }
+.checkbox-center {
+    margin-top: 10px !important;
+}

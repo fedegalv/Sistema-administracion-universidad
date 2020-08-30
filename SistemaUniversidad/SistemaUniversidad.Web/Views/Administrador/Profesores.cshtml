@@ -50,10 +50,10 @@
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Acciones
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <div class="dropdown-item">@Html.ActionLink("Editar", "Editar", "Profesor", new { id = item.Id }, null)</div>
-                    <div class="dropdown-item">@Html.ActionLink("Detalles", "Detalles", "Profesor", new { id = item.Id }, null)</div>
-                    <div class="dropdown-item">@Html.ActionLink("Eliminar", "Eliminar", "Profesor", new { id = item.Id }, null)</div>
+                <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-item text-center">@Html.ActionLink("Editar", "Editar", "Profesor", new { id = item.Id }, null)</div>
+                    <div class="dropdown-item text-center">@Html.ActionLink("Detalles", "Detalles", "Profesor", new { id = item.Id }, null)</div>
+                    <div class="dropdown-item text-center">@Html.ActionLink("Eliminar", "Eliminar", "Profesor", new { id = item.Id }, null)</div>
                 </div>
             </div>
         </td>

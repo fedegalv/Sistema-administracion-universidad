@@ -3,6 +3,10 @@
 @{
     ViewBag.Title = "Detalles";
     Layout = "~/Views/Alumno/_AlumnoLayout.cshtml";
+    if (Session["userId"] == null || (bool)Session["userIsAdmin"])
+    {
+        Response.Redirect("~/Login/Index");
+    }
 }
 
 <h2>Detalles de la materia</h2>

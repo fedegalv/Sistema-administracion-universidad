@@ -13,7 +13,8 @@ namespace SistemaUniversidad.Web.Controllers
     public class LoginController : Controller
     {
         SqlUserData db = new SqlUserData();
-        // GET: Login
+        
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
@@ -37,6 +38,7 @@ namespace SistemaUniversidad.Web.Controllers
                     Session["userId"] = usuario.Id;
                     Session["userDni"] = usuario.Dni;
                     Session["userIsAdmin"] = usuario.EsAdmin;
+                    //SI EL USUARIO ES ADMINISTRADOR REDIRIGE A SU SECCION CORRESPONDIENTE
                     if ((bool)Session["userIsadmin"])
                     {
                         Session["user"] = usuario;
@@ -44,6 +46,7 @@ namespace SistemaUniversidad.Web.Controllers
                     }
                     else if (!(bool)Session["userisAdmin"])
                     {
+                        // SI NO ES ADMINISTRADOR, SE CREA UN ALUMNO NUEVO SI CORRESPONDE
                         Session["user"] = usuario;
                         SqlAlumnoData sqlAlumno = new SqlAlumnoData();
 

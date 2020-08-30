@@ -18,7 +18,7 @@ namespace Universidad.Data.Models
         
         [Required]
         [Column("name")]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Debe usar letras unicamente")]
+        [RegularExpression(@"^[a-zA-Z ]+$", ErrorMessage = "Debe usar letras unicamente")]
         public string Nombre { get; set; }
 
         
