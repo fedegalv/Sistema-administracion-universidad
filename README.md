@@ -1,7 +1,7 @@
 # Sistema-administracion-universidad
 Sistema de administracion de materias de una universidad
 
-Se crea la base de datos mediante Entity Framework Code First. No hace falta crearla una.
+Se crea la base de datos mediante Entity Framework. No hace falta crearla una.
 
 Si no usar base de datos provista SistemaUniversidadDb.bak
 
