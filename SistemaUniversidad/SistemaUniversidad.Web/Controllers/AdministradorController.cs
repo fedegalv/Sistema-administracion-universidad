@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Universidad.Data.Business;
 using Universidad.Data.Models;
 using Universidad.Data.Services;
 
@@ -10,13 +11,6 @@ namespace SistemaUniversidad.Web.Controllers
 {
     public class AdministradorController : Controller
     {
-        private SqlProfesorData sqlProfesor;
-        SqlMateriaData sqlMateria;
-        public AdministradorController()
-        {
-            sqlProfesor = new SqlProfesorData();
-            sqlMateria = new SqlMateriaData();
-        }
         // GET: Administrador
         [HttpGet]
         public ActionResult Index()
@@ -27,20 +21,17 @@ namespace SistemaUniversidad.Web.Controllers
         [HttpGet]
         public ActionResult Profesores()
         {
-            var listaProfesor = sqlProfesor.ObtenerTodos();
-            return View(listaProfesor);
+            return View(ProfesorBusiness.ObtieneListaProfesor());
         }
         [HttpGet]
         public ActionResult Materias()
         {
-            var listaMaterias = sqlMateria.ObtenerTodos();
-            return View(listaMaterias);
+            return View(MateriaBusiness.ObtenerListaMaterias().OrderBy(m => m.Nombre));
         }
 
         public ActionResult _mostrarProfesor(int id)
         {
-            Profesor profesor = sqlProfesor.Obtener(id);
-            return PartialView(profesor);
+            return PartialView(ProfesorBusiness.ObtenerProfesor(id));
         }
     }
 }

@@ -13,8 +13,6 @@ namespace SistemaUniversidad.Web.Controllers
 {
     public class LoginController : Controller
     {
-        SqlUserData db = new SqlUserData();
-        
         [HttpGet]
         public ActionResult Index()
         {
@@ -49,7 +47,7 @@ namespace SistemaUniversidad.Web.Controllers
                     {
                         // SI NO ES ADMINISTRADOR, SE CREA UN ALUMNO NUEVO SI CORRESPONDE
                         Session["user"] = usuario;
-                        LogInBusiness.CrearAlumno(usuario.Id);
+                        AlumnoBusiness.CrearAlumno(usuario.Id);
                         return RedirectToAction("Index", "Alumno");
                     }
                 }

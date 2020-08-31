@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Universidad.Data.Business;
 using Universidad.Data.Models;
 using Universidad.Data.Services;
 
@@ -10,17 +11,10 @@ namespace SistemaUniversidad.Web.Controllers
 {
     public class ProfesorController : Controller
     {
-        private SqlProfesorData sqlProfesor;
-        public ProfesorController()
-        {
-            sqlProfesor = new SqlProfesorData();
-        }
-
         [HttpGet]
         public ActionResult Editar(int id)
         {
-            Profesor profesor = sqlProfesor.Obtener(id);
-            return View("~/Views/Profesor/Editar.cshtml", profesor);
+            return View("~/Views/Profesor/Editar.cshtml", ProfesorBusiness.ObtenerProfesor(id));
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -28,9 +22,8 @@ namespace SistemaUniversidad.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (profesor != null)
+                if (ProfesorBusiness.ActualizarProfesor(profesor))
                 {
-                    sqlProfesor.Actualizar(profesor);
                     return RedirectToAction("Profesores", "Administrador");
                 }
             }
@@ -40,8 +33,7 @@ namespace SistemaUniversidad.Web.Controllers
         [HttpGet]
         public ActionResult Eliminar(int id)
         {
-            Profesor profesor = sqlProfesor.Obtener(id);
-            return View("~/Views/Profesor/Eliminar.cshtml", profesor);
+            return View("~/Views/Profesor/Eliminar.cshtml", ProfesorBusiness.ObtenerProfesor(id));
         }
 
         [HttpPost]
@@ -49,9 +41,8 @@ namespace SistemaUniversidad.Web.Controllers
         public ActionResult Eliminar(Profesor profesor)
         {
 
-            if (profesor != null)
+            if (ProfesorBusiness.EliminarProfesor(profesor))
             {
-                sqlProfesor.Remover(profesor.Id);
                 return RedirectToAction("Profesores", "Administrador");
             }
 
@@ -60,8 +51,7 @@ namespace SistemaUniversidad.Web.Controllers
         [HttpGet]
         public ActionResult Detalles(int id)
         {
-            Profesor profesor = sqlProfesor.Obtener(id);
-            return View("~/Views/Profesor/Detalles.cshtml", profesor);
+            return View("~/Views/Profesor/Detalles.cshtml", ProfesorBusiness.ObtenerProfesor(id));
         }
         [HttpGet]
         public ActionResult Crear()
@@ -74,9 +64,8 @@ namespace SistemaUniversidad.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (profesor != null)
+                if (ProfesorBusiness.AgregarProfesor(profesor))
                 {
-                    sqlProfesor.Agregar(profesor);
                     return RedirectToAction("Profesores", "Administrador");
                 }
             }

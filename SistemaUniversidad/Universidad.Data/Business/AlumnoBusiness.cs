@@ -98,5 +98,25 @@ namespace Universidad.Data.Business
             }
             return listaMaterias;
         }
+        /// <summary>
+        /// Devuelve lista de materias en la base de datos;
+        /// </summary>
+        /// <returns>Lista de materias</returns>
+        
+        static public void CrearAlumno(int idUsuario)
+        {
+            SqlAlumnoData sqlAlumno = new SqlAlumnoData();
+
+            var alumno = sqlAlumno.Obtener(idUsuario);
+            if (alumno == null)
+            {
+                Alumno alumnoNuevo = new Alumno
+                {
+                    IdUsuario = idUsuario,
+                    ListaMaterias = ""
+                };
+                sqlAlumno.Agregar(alumnoNuevo);
+            }
+        }
     }
 }

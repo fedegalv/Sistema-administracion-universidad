@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Universidad.Data.Business;
 using Universidad.Data.Models;
 using Universidad.Data.Services;
 
@@ -10,45 +11,33 @@ namespace SistemaUniversidad.Web.Controllers
 {
     public class MateriaController : Controller
     {
-        private SqlProfesorData sqlProfesor;
-        private SqlMateriaData sqlMateria;
-        public MateriaController()
-        {
-            sqlProfesor = new SqlProfesorData();
-            sqlMateria = new SqlMateriaData();
-        }
-        // GET: Materia
+        [HttpGet]
+
         public ActionResult Crear()
         {
-            var profesorLista = new SelectList(sqlProfesor.ObtenerTodos().ToList(), "Id", "Apellido");
-            ViewData["profesorLista"] = profesorLista;
+            ViewData["profesorLista"] = new SelectList(ProfesorBusiness.ObtieneListaProfesor(), "Id", "Apellido");
             return View("~/Views/Materia/Crear.cshtml");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Crear(Materia materia)
         {
-
             if (ModelState.IsValid)
             {
-                if (materia != null)
+                if (MateriaBusiness.AgregarMateria(materia))
                 {
-                    sqlMateria.Agregar(materia);
                     return RedirectToAction("Materias", "Administrador");
                 }
             }
-            var profesorLista = new SelectList(sqlProfesor.ObtenerTodos().ToList(), "Id", "Apellido");
-            ViewData["profesorLista"] = profesorLista;
+            ViewData["profesorLista"] = new SelectList(ProfesorBusiness.ObtieneListaProfesor(), "Id", "Apellido");
             return View("~/Views/Materia/Crear.cshtml", materia);
 
         }
         [HttpGet]
         public ActionResult Editar(int id)
         {
-            var profesorLista = new SelectList(sqlProfesor.ObtenerTodos().ToList(), "Id", "Apellido");
-            ViewData["profesorLista"] = profesorLista;
-            Materia materia = sqlMateria.Obtener(id);
-            return View("~/Views/Materia/Editar.cshtml", materia);
+            ViewData["profesorLista"] = new SelectList(ProfesorBusiness.ObtieneListaProfesor(), "Id", "Apellido");
+            return View("~/Views/Materia/Editar.cshtml", MateriaBusiness.ObtenerMateria(id));
         }
 
         [HttpPost]
@@ -56,21 +45,18 @@ namespace SistemaUniversidad.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (materia != null)
+                if (MateriaBusiness.ActualizarMateria(materia))
                 {
-                    sqlMateria.Actualizar(materia);
                     return RedirectToAction("Materias", "Administrador");
                 }
             }
-            var profesorLista = new SelectList(sqlProfesor.ObtenerTodos().ToList(), "Id", "Apellido");
-            ViewData["profesorLista"] = profesorLista;
+            ViewData["profesorLista"] = new SelectList(ProfesorBusiness.ObtieneListaProfesor(), "Id", "Apellido");
             return View("~/Views/Materia/Editar.cshtml", materia);
         }
         [HttpGet]
         public ActionResult Eliminar(int id)
         {
-            Materia materia = sqlMateria.Obtener(id);
-            return View("~/Views/Materia/Eliminar.cshtml", materia);
+            return View("~/Views/Materia/Eliminar.cshtml", MateriaBusiness.ObtenerMateria(id));
         }
 
         [HttpPost]
@@ -78,9 +64,8 @@ namespace SistemaUniversidad.Web.Controllers
         public ActionResult Eliminar(Materia materia)
         {
 
-            if (materia != null)
+            if (MateriaBusiness.EliminarMateria(materia))
             {
-                sqlMateria.Remover(materia.Id);
                 return RedirectToAction("Materias", "Administrador");
             }
 
@@ -89,17 +74,12 @@ namespace SistemaUniversidad.Web.Controllers
         [HttpGet]
         public ActionResult Detalles(int id)
         {
-            Materia materia = sqlMateria.Obtener(id);
-            return View("~/Views/Materia/Detalles.cshtml", materia);
+            return View("~/Views/Materia/Detalles.cshtml", MateriaBusiness.ObtenerMateria(id));
         }
-
-
-
         [HttpGet]
         public ActionResult _mostrarProfesor(int id)
         {
-            var profesor = sqlProfesor.Obtener(id);
-            return PartialView(profesor);
+            return PartialView(ProfesorBusiness.ObtenerProfesor(id));
         }
     }
 }

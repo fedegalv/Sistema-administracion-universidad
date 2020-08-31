@@ -20,21 +20,7 @@ namespace Universidad.Data.Business
             }
             return null;
         }
-        static public void CrearAlumno(int idUsuario)
-        {
-            SqlAlumnoData sqlAlumno = new SqlAlumnoData();
-
-            var alumno = sqlAlumno.Obtener(idUsuario);
-            if (alumno == null)
-            {
-                Alumno alumnoNuevo = new Alumno
-                {
-                    IdUsuario = idUsuario,
-                    ListaMaterias = ""
-                };
-                sqlAlumno.Agregar(alumnoNuevo);
-            }
-        }
+        
 
     }
 }

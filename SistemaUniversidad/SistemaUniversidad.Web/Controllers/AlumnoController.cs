@@ -13,16 +13,6 @@ namespace SistemaUniversidad.Web.Controllers
 {
     public class AlumnoController : Controller
     {
-        private SqlMateriaData sqlMateria;
-        SqlAlumnoData sqlAlumno;
-        SqlUserData sqlUser;
-        public AlumnoController()
-        {
-            sqlAlumno = new SqlAlumnoData();
-            sqlMateria = new SqlMateriaData();
-            sqlUser = new SqlUserData();
-        }
-
         [HttpGet]
         public ActionResult Index()
         {
@@ -33,16 +23,14 @@ namespace SistemaUniversidad.Web.Controllers
         /// Devuelve como modelo lista de materias ordenadas, para mostrar en el View
         public ActionResult Materias()
         {
-            var listaMaterias = sqlMateria.ObtenerTodos();
             ViewData["error"] = TempData["error"];
-            return View(listaMaterias.OrderBy(m => m.Nombre));
+            return View((MateriaBusiness.ObtenerListaMaterias()).OrderBy(m => m.Nombre));
         }
 
         [HttpGet]
         public ActionResult Detalles(int id)
         {
-            Materia materia = sqlMateria.Obtener(id);
-            return View("~/Views/Alumno/Detalles.cshtml", materia);
+            return View("~/Views/Alumno/Detalles.cshtml", MateriaBusiness.ObtenerMateria(id));
         }
         [HttpGet]
         /// RECIBE UNA ID DE LA MATERIA
